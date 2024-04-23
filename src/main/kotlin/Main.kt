@@ -25,6 +25,14 @@ fun reverseString(str: String): String = str.reversed()
 fun findMaxElement(array: Array<Int>): Int? = array.maxOrNull()
 
 fun fibonacci(n: Int): List<Int> {
+    if (n == 0) {
+        return emptyList()
+    }
+
+    if (n == 1) {
+        return mutableListOf(0)
+    }
+
     val fibonacciSequence = mutableListOf(0, 1)
 
     for (i in 2..<n) {
@@ -57,7 +65,7 @@ fun main () {
     println("$number is prime: ${isPrime(number)}")
     println("Reverse of $str is: ${reverseString(str)}")
     println("Maximum element in the array: ${findMaxElement(array)}")
-    println("Fibonacci sequence up to $number terms: ${fibonacci(number)}")
+    println("Fibonacci sequence up to $number terms: ${fibonacci(1)}")
     println("Is \"$palindrome\" palindrome: ${isPalindrome(palindrome)}")
     println("Sum of digits in $number: ${sumOfDigits(number)}")
     println("GCD of $a and $b: ${gcd(a, b)}")

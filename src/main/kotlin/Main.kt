@@ -1,16 +1,66 @@
-package org.example
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
-
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+fun factorial(n: Int): Long {
+    if (n == 0 || n == 1) {
+        return 1
     }
+
+    return n * factorial(n - 1)
+}
+
+fun isPrime(n: Int): Boolean {
+    if (n <= 1) {
+        return false
+    }
+
+    for (i in 2..(n / 2)) {
+        if (n % i == 0) {
+            return false
+        }
+    }
+
+    return true
+}
+
+fun reverseString(str: String): String = str.reversed()
+
+fun findMaxElement(array: Array<Int>): Int? = array.maxOrNull()
+
+fun fibonacci(n: Int): List<Int> {
+    val fibonacciSequence = mutableListOf(0, 1)
+
+    for (i in 2..<n) {
+        fibonacciSequence.add(fibonacciSequence[i - 1] + fibonacciSequence[i - 2])
+    }
+
+    return fibonacciSequence
+}
+
+fun isPalindrome(str: String): Boolean = str.lowercase() == reverseString(str).lowercase()
+
+fun sumOfDigits(n: Int): Int = n.toString().sumOf { it.toString().toInt() }
+
+fun gcd(x: Int, y: Int): Int = if (y == 0) x else gcd(y, x % y)
+
+fun countVowels(str: String): Int = str.count { it.lowercase() in "aeiou" }
+
+fun celsiusToFahrenheit(celsius: Int): Double = celsius * 9.0 / 5 + 32
+
+fun main () {
+    val number = 13
+    val str = "HellO"
+    val array = arrayOf(0, 9, 5, 6, 1, 7, 8, 8, 3, 5, 0)
+    val palindrome = "racecar"
+    val a = 0
+    val b = 28
+    val celcius = 37
+
+    println("Factorial of $number: ${factorial(number)}")
+    println("$number is prime: ${isPrime(number)}")
+    println("Reverse of $str is: ${reverseString(str)}")
+    println("Maximum element in the array: ${findMaxElement(array)}")
+    println("Fibonacci sequence up to $number terms: ${fibonacci(number)}")
+    println("Is \"$palindrome\" palindrome: ${isPalindrome(palindrome)}")
+    println("Sum of digits in $number: ${sumOfDigits(number)}")
+    println("GCD of $a and $b: ${gcd(a, b)}")
+    println("Number of vowels in \"$str\": ${countVowels(str)}")
+    println("$celcius°C in °F: ${celsiusToFahrenheit(celcius)}")
 }
